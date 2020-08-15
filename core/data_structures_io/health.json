@@ -1,0 +1,8 @@
+{
+    "url": "/health",
+    "responses": {
+        "get": {
+            "200": null
+        }
+    }
+}

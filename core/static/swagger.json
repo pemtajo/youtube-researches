@@ -1,0 +1,23 @@
+{
+   "openapi": "3.0.3",
+   "info": {
+      "version": "1.0.0",
+      "title": "Youtube research",
+      "description": "The Documentation using the aiqDocTest",
+      "contact": {
+         "name": "Pedro Matias de Ara\u00fajo",
+         "email": "pedrom.araujo@outlook.com"
+      },
+      "license": {
+         "name": "MIT",
+         "url": "https://opensource.org/licenses/MIT"
+      }
+   },
+   "paths": {
+      "/health": {
+         "get": {
+            "responses": {}
+         }
+      }
+   }
+}

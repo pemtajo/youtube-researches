@@ -1,0 +1,11 @@
+FROM python:alpine
+
+RUN apk add --update npm openssh git
+RUN pip3 install redis aiqDocTests
+
+WORKDIR tests-core
+
+COPY tests/.env.test .env
+COPY .aiqdoctests.config .aiqdoctests.config
+
+COPY tests/ tests/

@@ -1,0 +1,51 @@
+version: "3.7"
+services:
+  cache:
+    image: redis:alpine
+    command: redis-server
+    container_name: tests-youtube-research-redis
+    networks:
+      - tests-youtube-research
+    ports:
+      - "6379:6379"
+  app:
+    build: ../
+    image: dev-youtube-research
+    container_name: youtube-research
+    depends_on:
+      - cache
+    networks:
+      - tests-youtube-research
+    volumes:
+      - ../:/youtube-research
+    ports:
+      - "12345:12345"
+    env_file:
+      - .env.test
+  tests:
+    build:
+      context: ../
+      dockerfile: tests/dockerfile
+    command: sh -c "aiqdoctests -w --runTests --generateDoc"
+    image: tests-youtube-research
+    container_name: tests-youtube-research
+    depends_on:
+      - app
+    networks:
+      - tests-youtube-research
+    volumes:
+      - ../tests:/tests-core/tests
+      - ../data_structures_io:/tests-core/data_structures_io
+      - ../.aiqdoctests.config:/tests-core/.aiqdoctests.config
+      - ../static/swagger.json:/tests-core/static/swagger.json
+    environment:
+      - BASE_URL=http://youtube-research:12345
+      - WAIT_HOSTS=app:12345
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=5
+      - WAIT_HOST_CONNECT_TIMEOUT=30
+    env_file:
+      - .env.test
+
+networks:
+  tests-youtube-research:

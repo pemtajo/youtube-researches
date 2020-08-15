@@ -1,0 +1,11 @@
+FROM python:alpine
+
+RUN pip3 install redis
+
+RUN pip3 install flask flask_swagger_ui
+
+WORKDIR /core
+COPY . .
+
+CMD python3 -u app.py
+
