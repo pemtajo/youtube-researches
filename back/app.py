@@ -10,7 +10,7 @@ app = Flask(__name__)
 GENERIC_DESCRIPTION = "Sorry :( Something happened here! Someone should have dropped soda in the keyboard but everything will be clean soon"
 from config.log import Log
 
-log = Log("core")
+log = Log("back")
 
 SWAGGER_URL = "/docs"
 SWAGGERUI_BLUEPRINT = get_swaggerui_blueprint(

@@ -1,7 +1,7 @@
 version: "3.7"
 services:
-  core:
-    build: core
+  back:
+    build: back
     container_name: dev-youtube-research
     # depends_on:
     #   - cache
@@ -10,9 +10,9 @@ services:
     ports:
       - "12345:12345"
     env_file:
-      - core/docker/.env
+      - back/docker/.env
     # volumes:
-    #   - /core/:/core
+    #   - /back:/back
   # cache:
   #   image: redis:alpine
   #   command: redis-server

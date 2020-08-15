@@ -34,10 +34,10 @@ services:
     networks:
       - tests-youtube-research
     volumes:
-      - ../tests:/tests-core/tests
-      - ../data_structures_io:/tests-core/data_structures_io
-      - ../.aiqdoctests.config:/tests-core/.aiqdoctests.config
-      - ../static/swagger.json:/tests-core/static/swagger.json
+      - ../tests:/tests-back/tests
+      - ../data_structures_io:/tests-back/data_structures_io
+      - ../.aiqdoctests.config:/tests-back/.aiqdoctests.config
+      - ../static/swagger.json:/tests-back/static/swagger.json
     environment:
       - BASE_URL=http://youtube-research:12345
       - WAIT_HOSTS=app:12345
