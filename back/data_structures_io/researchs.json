@@ -1,0 +1,114 @@
+{
+    "url": "/researchs",
+    "summary": "Youtube researchs",
+    "requestBody": {
+        "description": "Request to research in youtube",
+        "required": true,
+        "content": {
+            "application/json": {
+                "required": [
+                    "term",
+                    "days"
+                ],
+                "properties": {
+                    "term": {
+                        "type": "string"
+                    },
+                    "days": {
+                        "type": "list",
+                        "schema": {
+                            "type": "dict",
+                            "schema": {
+                                "value": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "responses": {
+            "post": {
+                "200": {
+                    "description": "Return with success",
+                    "properties": {
+                        "success": {
+                            "type": "boolean"
+                        },
+                        "data": {
+                            "type": "dict",
+                            "schema": {
+                                "ride_uuid": {
+                                    "type": "string"
+                                },
+                                "cost": {
+                                    "type": "float"
+                                },
+                                "orders": {
+                                    "type": "list",
+                                    "schema": {
+                                        "type": "dict",
+                                        "schema": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "number": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "400": {
+                    "description": "You send me data wrong, please don't do this again",
+                    "properties": {
+                        "success": {
+                            "type": "boolean"
+                        },
+                        "data": {
+                            "type": "dict",
+                            "schema": {
+                                "message": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Security failure",
+                        "properties": {
+                            "data": {
+                                "type": "dict",
+                                "schema": {
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Data that don't make sense",
+                        "properties": {
+                            "success": {
+                                "type": "boolean"
+                            },
+                            "data": {
+                                "type": "dict",
+                                "schema": {
+                                    "message": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

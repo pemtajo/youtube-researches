@@ -12,7 +12,7 @@ services:
     env_file:
       - back/docker/.env
     # volumes:
-    #   - /back:/back
+    #   - back/:/back
   # cache:
   #   image: redis:alpine
   #   command: redis-server
