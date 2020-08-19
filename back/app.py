@@ -5,9 +5,10 @@ import os
 from http import HTTPStatus
 from flask_swagger_ui import get_swaggerui_blueprint
 from controllers.controller import result
-
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 GENERIC_DESCRIPTION = "Sorry :( Something happened here! Someone should have dropped soda in the keyboard but everything will be clean soon"
 from config.log import Log

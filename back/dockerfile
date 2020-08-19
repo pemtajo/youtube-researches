@@ -2,7 +2,7 @@ FROM python:alpine
 
 RUN pip3 install redis
 
-RUN pip3 install flask flask_swagger_ui
+RUN pip3 install flask flask_swagger_ui flask_cors
 
 WORKDIR /back
 COPY . .
