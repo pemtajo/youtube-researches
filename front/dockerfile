@@ -1,0 +1,10 @@
+FROM node:alpine
+
+WORKDIR /front
+COPY . .
+
+ENV PATH /front/node_modules/.bin:$PATH
+
+RUN npm install
+
+CMD npm run start

@@ -2,24 +2,29 @@ version: "3.7"
 services:
   back:
     build: back
-    container_name: dev-youtube-research
-    # depends_on:
-    #   - cache
+    container_name: dev-youtube-research-back
     networks:
       - youtube-research
     ports:
       - "12345:12345"
     env_file:
       - back/docker/.env
-    # volumes:
-    #   - back/:/back
-  # cache:
-  #   image: redis:alpine
-  #   command: redis-server
-  #   container_name: dev-cache
-  #   networks:
-  #     - youtube-research
-  #   ports:
-  #     - "6379:6379"
+    volumes:
+      - ./back/:/back
+  front:
+    build: front
+    container_name: dev-youtube-research-front
+    depends_on:
+      - back
+    networks:
+      - youtube-research
+    ports:
+      - "3000:3000"
+    env_file:
+      - front/docker/.env
+    volumes:
+      - ./front/public:/front/public
+      - ./front/src:/front/src
+
 networks:
   youtube-research:

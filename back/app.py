@@ -7,6 +7,7 @@ from flask_swagger_ui import get_swaggerui_blueprint
 from controllers.controller import result
 from flask_cors import CORS
 
+
 app = Flask(__name__)
 CORS(app)
 
