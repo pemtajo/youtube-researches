@@ -4,6 +4,7 @@ from youtube_search import YoutubeSearch
 from collections import Counter
 
 MAX_RESULTS = 200
+PREFIX_YOUTUBE = "http://www.youtube.com/watch?v=%s"
 
 
 def convertToSeconds(duration):
@@ -46,10 +47,13 @@ def calculateDays(days, videos):
                 video["used"] = True
             if count + video["duration"] <= s:
                 video["used"] = True
-                urls.append("http://www.youtube.com/watch?v=%s" % video["id"])
+                urls.append(PREFIX_YOUTUBE % video["id"])
                 count += video["duration"]
 
         watch_in_days.append(urls)
+
+    if videos_useful:
+        watch_in_days.append([PREFIX_YOUTUBE % v["id"] for v in videos_useful])
 
     return watch_in_days
 
