@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Button, themeDefault, Divider, Text } from 'aiq-design-system';
-import { Input } from 'reactstrap';
+import { Button, themeDefault, Divider, Text, Input } from 'aiq-design-system';
 import axios from 'axios'
 import YouTube from 'react-youtube';
 
@@ -65,8 +64,8 @@ class Screen extends Component {
   render() {
     return (
       <div>
-        <Input type="textarea" name="term" placeholder="term" onChange={this.changeTerm} />
-        <Input type="textarea" name="days" placeholder="days" onChange={this.changeDays} />
+        <Input variant='outlined' type="text" name="term" label="term" onChange={this.changeTerm} />
+        <Input variant='outlined' type="text" name="days" label="days" onChange={this.changeDays} />
         <Button palette="primary" variant="contained" onClick={this.doResearch} >RESEARCH</Button>
         {
           this.state.researchs &&
