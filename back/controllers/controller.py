@@ -8,8 +8,14 @@ PREFIX_YOUTUBE = "http://www.youtube.com/watch?v=%s"
 
 
 def convertToSeconds(duration):
-    minutes, seconds = duration.split(":")
-    return int(minutes) * 60 + int(seconds)
+    d = str(duration).split(":")
+
+    if len(d) == 3:
+        return int(d[2]) * 3600 + int(d[1]) * 60 + int(d[0])
+    elif len(d) == 2:
+        return int(d[1]) * 60 + int(d[0])
+    else:
+        return int(d[0])
 
 
 def returnVideos(term):
@@ -18,8 +24,8 @@ def returnVideos(term):
     return [
         {
             "id": s["id"],
-            "title": s["title"],
-            "description": s["long_desc"],
+            "title": s.get("title", ""),
+            "description": s.get("long_desc", ""),
             "duration": convertToSeconds(s["duration"]),
             "used": False,
         }
@@ -47,13 +53,13 @@ def calculateDays(days, videos):
                 video["used"] = True
             if count + video["duration"] <= s:
                 video["used"] = True
-                urls.append(PREFIX_YOUTUBE % video["id"])
+                urls.append(video["id"])
                 count += video["duration"]
 
         watch_in_days.append(urls)
 
     if videos_useful:
-        watch_in_days.append([PREFIX_YOUTUBE % v["id"] for v in videos_useful])
+        watch_in_days.append([v["id"] for v in videos_useful])
 
     return watch_in_days
 
