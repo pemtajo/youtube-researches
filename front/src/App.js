@@ -54,7 +54,7 @@ class Screen extends Component {
   showTopWords = (words) => {
     let str = "";
     for (var i in words) {
-      str += "'" + words[i][0] + "'->" + words[i][1] + "\n ";
+      str += "'" + words[i][0] + "'(" + words[i][1] + ")                     ";
     }
     return str;
   }
