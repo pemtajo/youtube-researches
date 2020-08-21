@@ -46,7 +46,6 @@ def calculateDays(days, videos):
     videos_useful = videos
     for s in seconds:
         count = 0
-        videos_useful = [v for v in videos_useful if not v["used"]]
         urls = []
         for video in videos_useful:
             if video["duration"] > max_seconds:
@@ -57,6 +56,7 @@ def calculateDays(days, videos):
                 count += video["duration"]
 
         watch_in_days.append(urls)
+        videos_useful = [v for v in videos_useful if not v["used"]]
 
     if videos_useful:
         watch_in_days.append([v["id"] for v in videos_useful])
