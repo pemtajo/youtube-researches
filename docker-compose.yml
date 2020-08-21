@@ -14,6 +14,8 @@ services:
   front:
     build: front
     container_name: dev-youtube-research-front
+    stdin_open: true
+    tty: true
     depends_on:
       - back
     networks:
