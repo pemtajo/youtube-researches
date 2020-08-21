@@ -79,7 +79,7 @@ class Screen extends Component {
                 <div>
                   <Divider width={'100%'} color={'primary'}><Text paddingRight={10} paddingLeft={10}>DAY</Text></Divider>
                   <ul >
-                    {day.map(url => (<div><YouTube videoId={url} opts={this.opts} /><br /></div>))}
+                    {day.map(url => (<div><YouTube videoId={url} opts={this.opts} /></div>))}
                   </ul>
                 </div>
               ))
