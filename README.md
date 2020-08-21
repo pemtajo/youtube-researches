@@ -1,6 +1,6 @@
 # youtube-researches
 
-Just run:
+Just run in the folder:
 
 `
 docker-compose up
